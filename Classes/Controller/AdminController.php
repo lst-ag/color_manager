@@ -1,6 +1,6 @@
 <?php
 
-namespace CHF\ColorManager\Controller;
+namespace LST\ColorManager\Controller;
 
 /***
  *
@@ -9,18 +9,18 @@ namespace CHF\ColorManager\Controller;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2016 Christian Fries <hallo@christian-fries.ch>
+ *  (c) 2016 Christian Fries <christian.fries@lst.team>
  *
  ***/
 
-use CHF\BackendModule\Controller\BackendModuleActionController;
+use LST\BackendModule\Controller\BackendModuleActionController;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class AdminController extends BackendModuleActionController
 {
     /**
-     * @var \CHF\ColorManager\Domain\Repository\ColorRepository
+     * @var \LST\ColorManager\Domain\Repository\ColorRepository
      * @inject
      */
     protected $colorRepository = null;

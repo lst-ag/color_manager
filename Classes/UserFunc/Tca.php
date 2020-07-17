@@ -1,6 +1,6 @@
 <?php
 
-namespace CHF\ColorManager\UserFunc;
+namespace LST\ColorManager\UserFunc;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
@@ -11,7 +11,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2016 Christian Fries <hallo@christian-fries.ch>
+ *  (c) 2016 Christian Fries <christian.fries@lst.team>
  *
  ***/
 

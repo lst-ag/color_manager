@@ -1,6 +1,6 @@
 <?php
 
-namespace CHF\ColorManager\Hook;
+namespace LST\ColorManager\Hook;
 
 /***
  *
@@ -9,7 +9,7 @@ namespace CHF\ColorManager\Hook;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2016 Christian Fries <hallo@christian-fries.ch>
+ *  (c) 2016 Christian Fries <christian.fries@lst.team>
  *
  ***/
 

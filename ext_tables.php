@@ -8,7 +8,7 @@ call_user_func(
         if (TYPO3_MODE === 'BE') {
             if ($settings['showAdministrationModule']) {
                 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-                    'CHF.ColorManager',
+                    'LST.ColorManager',
                     'tools', // Make module a submodule of 'tools'
                     'admin', // Submodule key
                     '', // Position
@@ -35,5 +35,5 @@ call_user_func(
 );
 
 // Register hooks
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'CHF\ColorManager\Hook\TcaHook';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][] = 'CHF\ColorManager\Hook\TcaHook';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'LST\ColorManager\Hook\TcaHook';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][] = 'LST\ColorManager\Hook\TcaHook';

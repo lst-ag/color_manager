@@ -1,14 +1,25 @@
 {
-	"name": "chf/color-manager",
+	"name": "lst/color-manager",
 	"type": "typo3-cms-extension",
 	"description": "TYPO3 Color Manager",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Christian Fries",
+			"email": "christian.fries@lst.team",
+			"role": "Developer"
+		}
+	],
 	"require": {
-		"typo3/cms-core": "^8.7 || ^9.5",
-		"chf/backend-module": "^1.0"
+		"lst/backend-module": "^2.0",
+		"typo3/cms-core": "^9.5 || ^10.4"
+	},
+	"replace": {
+		"chf/color-manager": "*"
 	},
 	"autoload": {
 		"psr-4": {
-			"CHF\\ColorManager\\": "Classes"
+			"LST\\ColorManager\\": "Classes"
 		}
 	}
 }

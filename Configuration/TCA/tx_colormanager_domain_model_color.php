@@ -3,7 +3,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:tx_colormanager_domain_model_color',
         'label' => 'name',
-        'label_userFunc' => 'CHF\ColorManager\UserFunc\Tca->colorTitle',
+        'label_userFunc' => 'LST\ColorManager\UserFunc\Tca->colorTitle',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
