@@ -21,14 +21,6 @@ return [
         '1' => ['showitem' => 'name, color, '],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => 0,
-            'config' => [
-                'type' => 'passthrough',
-                'default' => -0,
-            ],
-        ],
-
         'name' => [
             'exclude' => 0,
             'label' => $llFile . 'color.name',
