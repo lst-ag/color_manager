@@ -14,6 +14,9 @@ declare(strict_types = 1);
 
 namespace LST\ColorManager\Hook;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class TcaHook
 {
     /**
@@ -25,16 +28,19 @@ class TcaHook
      * @param array $fieldArray
      * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
      */
-    public function processDatamap_postProcessFieldArray($status, $table, $id, array &$fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function processDatamap_postProcessFieldArray($status, $table, $id, array &$fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$dataHandler)
     {
         // If selected color on pages record changed, change color value in db
         if ($table === 'pages' && array_key_exists('tx_colormanager_color_uid', $fieldArray)) {
             if (!empty($fieldArray['tx_colormanager_color_uid'])) {
-                $record = $this->getDatabaseConnection()->exec_SELECTgetSingleRow(
-                    'color',
-                    'tx_colormanager_domain_model_color',
-                    'uid = ' . (int)$fieldArray['tx_colormanager_color_uid']
-                );
+                $queryBuilder = $this->getDatabaseConnectionPool()->getQueryBuilderForTable('tx_colormanager_domain_model_color');
+                $statement = $queryBuilder
+                    ->select('color')
+                    ->from('tx_colormanager_domain_model_color')
+                    ->where(
+                        $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter((int) $fieldArray['tx_colormanager_color_uid']))
+                    )->execute();
+                $record = $statement->fetch();
 
                 $fieldArray['tx_colormanager_color'] = $record['color'];
             } else {
@@ -44,46 +50,48 @@ class TcaHook
 
         // If color on color record changed, update all pages referencing that color
         if ($table === 'tx_colormanager_domain_model_color' && array_key_exists('color', $fieldArray)) {
-            $this->getDatabaseConnection()->exec_UPDATEquery(
-                'pages',
-                'tx_colormanager_color_uid = ' . $id,
-                [
-                    'tx_colormanager_color' => $fieldArray['color']
-                ]
-            );
+            $queryBuilder = $this->getDatabaseConnectionPool()->getQueryBuilderForTable('pages');
+            $queryBuilder
+                ->update('pages')
+                ->where(
+                    $queryBuilder->expr()->eq('tx_colormanager_color_uid', $queryBuilder->createNamedParameter($id))
+                )
+                ->set('tx_colormanager_color', $fieldArray['color'])
+                ->execute();
         }
     }
 
     /**
      * Hook executed when record is deleted
      *
-     * @param $table
-     * @param $id
-     * @param $recordToDelete
-     * @param null $recordWasDeleted
+     * @param string $table
+     * @param int $id
+     * @param array $recordToDelete
+     * @param bool $recordWasDeleted
      * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
      */
-    public function processCmdmap_deleteAction($table, $id, $recordToDelete, $recordWasDeleted=null, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function processCmdmap_deleteAction($table, $id, $record, &$recordWasDeleted, \TYPO3\CMS\Core\DataHandling\DataHandler &$dataHandler)
     {
         if ($table === 'tx_colormanager_domain_model_color') {
-            $this->getDatabaseConnection()->exec_UPDATEquery(
-                'pages',
-                'tx_colormanager_color_uid = ' . $id,
-                [
-                    'tx_colormanager_color_uid' => '',
-                    'tx_colormanager_color' => ''
-                ]
-            );
+            $queryBuilder = $this->getDatabaseConnectionPool()->getQueryBuilderForTable('pages');
+            $queryBuilder
+                ->update('pages')
+                ->where(
+                    $queryBuilder->expr()->eq('tx_colormanager_color_uid', $queryBuilder->createNamedParameter($id))
+                )
+                ->set('tx_colormanager_color', '')
+                ->set('tx_colormanager_color_uid', '')
+                ->execute();
         }
     }
 
     /**
-     * Get TYPO3 database connection
+     * Get TYPO3 database connection pool
      *
-     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+     * @return ConnectionPool
      */
-    protected function getDatabaseConnection()
+    protected function getDatabaseConnectionPool()
     {
-        return $GLOBALS['TYPO3_DB'];
+        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }
