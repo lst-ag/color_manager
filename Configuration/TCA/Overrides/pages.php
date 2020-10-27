@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') || die();
+defined('TYPO3_MODE') or die();
 
 $additional_pages_columns = [
     'tx_colormanager_color_uid' => [

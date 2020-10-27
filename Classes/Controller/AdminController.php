@@ -1,6 +1,5 @@
 <?php
-
-namespace LST\ColorManager\Controller;
+declare(strict_types = 1);
 
 /***
  *
@@ -13,15 +12,20 @@ namespace LST\ColorManager\Controller;
  *
  ***/
 
+namespace LST\ColorManager\Controller;
+
 use LST\BackendModule\Controller\BackendModuleActionController;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 class AdminController extends BackendModuleActionController
 {
     /**
+     * @Extbase\Inject
      * @var \LST\ColorManager\Domain\Repository\ColorRepository
-     * @inject
      */
     protected $colorRepository = null;
 
@@ -51,8 +55,8 @@ class AdminController extends BackendModuleActionController
         $this->moduleName = 'tools_ColorManagerAdmin';
         $this->showConfigurationButton = true;
 
-        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['color_manager']);
-        $this->pageUid = intval($extConf['globalStoragePid']);
+        $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('color_manager');
+        $this->pageUid = intval($extensionConfiguration['globalStoragePid']);
 
         parent::initializeAction();
 

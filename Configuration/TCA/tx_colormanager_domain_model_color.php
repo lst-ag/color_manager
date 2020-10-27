@@ -1,4 +1,6 @@
 <?php
+declare(strict_types = 1);
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:tx_colormanager_domain_model_color',

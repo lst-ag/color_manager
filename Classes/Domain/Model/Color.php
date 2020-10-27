@@ -1,6 +1,5 @@
 <?php
-
-namespace LST\ColorManager\Domain\Model;
+declare(strict_types = 1);
 
 /***
  *
@@ -13,19 +12,22 @@ namespace LST\ColorManager\Domain\Model;
  *
  ***/
 
+namespace LST\ColorManager\Domain\Model;
+
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Color extends AbstractEntity
 {
     /**
+     * @Extbase\Validate("NotEmpty")
      * @var string
-     * @validate NotEmpty
      */
     protected $name = '';
 
     /**
+     * @Extbase\Validate("NotEmpty")
      * @var string
-     * @validate NotEmpty
      */
     protected $color = '';
 

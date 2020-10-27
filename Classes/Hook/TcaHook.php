@@ -1,6 +1,5 @@
 <?php
-
-namespace LST\ColorManager\Hook;
+declare(strict_types = 1);
 
 /***
  *
@@ -12,6 +11,8 @@ namespace LST\ColorManager\Hook;
  *  (c) 2016 Christian Fries <christian.fries@lst.team>
  *
  ***/
+
+namespace LST\ColorManager\Hook;
 
 class TcaHook
 {
@@ -33,7 +34,7 @@ class TcaHook
                     'color',
                     'tx_colormanager_domain_model_color',
                     'uid = ' . (int)$fieldArray['tx_colormanager_color_uid']
-               );
+                );
 
                 $fieldArray['tx_colormanager_color'] = $record['color'];
             } else {

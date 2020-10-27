@@ -1,6 +1,5 @@
 <?php
-
-namespace LST\ColorManager\Domain\Repository;
+declare(strict_types = 1);
 
 /***
  *
@@ -12,6 +11,8 @@ namespace LST\ColorManager\Domain\Repository;
  *  (c) 2016 Christian Fries <christian.fries@lst.team>
  *
  ***/
+
+namespace LST\ColorManager\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
