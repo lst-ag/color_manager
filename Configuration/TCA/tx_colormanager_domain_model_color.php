@@ -1,9 +1,11 @@
 <?php
 declare(strict_types = 1);
 
+$llFile = 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:';
+
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:tx_colormanager_domain_model_color',
+        'title' => $llFile . 'color',
         'label' => 'name',
         'label_userFunc' => 'LST\ColorManager\UserFunc\Tca->colorTitle',
         'tstamp' => 'tstamp',
@@ -14,9 +16,6 @@ return [
 
         'searchFields' => 'name,color,',
         'iconfile' => 'EXT:color_manager/Resources/Public/Icons/tx_colormanager_domain_model_color.gif'
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, name, color',
     ],
     'types' => [
         '1' => ['showitem' => 'name, color, '],
@@ -32,7 +31,7 @@ return [
 
         'name' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:tx_colormanager_domain_model_color.name',
+            'label' => $llFile . 'color.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -41,7 +40,7 @@ return [
         ],
         'color' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:color_manager/Resources/Private/Language/locallang_db.xlf:tx_colormanager_domain_model_color.color',
+            'label' => $llFile . 'color.color',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'colorpicker',

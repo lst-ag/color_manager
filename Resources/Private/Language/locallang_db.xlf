@@ -3,16 +3,16 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2016-12-01T19:11:24Z" product-name="color_manager">
 		<header/>
 		<body>
-			<trans-unit id="tx_colormanager_domain_model_color">
+			<trans-unit id="color">
 				<source>Color</source>
 			</trans-unit>
-			<trans-unit id="tx_colormanager_domain_model_color.name">
+			<trans-unit id="color.name">
 				<source>Name</source>
 			</trans-unit>
-			<trans-unit id="tx_colormanager_domain_model_color.color">
+			<trans-unit id="color.color">
 				<source>Color</source>
 			</trans-unit>
-			<trans-unit id="tx_colormanager_domain_model_color.color.choose">
+			<trans-unit id="color.color.choose">
 				<source>Choose a color</source>
 			</trans-unit>
 			<trans-unit id="color.palette.title">
