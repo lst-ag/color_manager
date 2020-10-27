@@ -16,12 +16,4 @@ This extension supports TYPO3 9 LTS and TYPO3 10 LTS.
 
 ## Change log
 
-### dev-master
-- [!!!] Change vendor prefix from `CHF` to `LST`
-- Require TYPO3 9 LTS or TYPO3 10 LTS
-
-### Version 1.0.1
-- TYPO3 7 and 8 compatibility for color picker TCA
-
-### Version 1.0.0
-- First stable release
+You can find the change log [here](./CHANGELOG.md).

@@ -1,8 +1,12 @@
 {
 	"name": "lst/color-manager",
 	"type": "typo3-cms-extension",
-	"description": "TYPO3 Color Manager",
+	"description": "Extension to manage colors in the TYPO3 backend.",
 	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"typo3",
+		"color"
+	],
 	"authors": [
 		{
 			"name": "Christian Fries",
@@ -12,7 +16,7 @@
 	],
 	"require": {
 		"lst/backend-module": "^2.0",
-		"typo3/cms-core": "^9.5 || ^10.4"
+		"typo3/cms-core": "~9.5.17 || ~10.4.2"
 	},
 	"replace": {
 		"chf/color-manager": "*"
